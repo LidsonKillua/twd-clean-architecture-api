@@ -1,0 +1,15 @@
+# Ignore artifacts:
+build
+coverage
+
+# Ignore all HTML files:
+**/*.html
+
+# ignore .json
+**/*.json
+
+# defaults
+**/.git
+**/.svn
+**/.hg
+**/node_modules

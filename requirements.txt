@@ -1,0 +1,4 @@
+Api Requirements
+
+1 - Registrar usuário na lista de emails
+2 - Enviar email para usuário com pôster
