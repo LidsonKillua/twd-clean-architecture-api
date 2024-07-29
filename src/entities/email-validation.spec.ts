@@ -15,4 +15,10 @@ describe('Email validation', () => {
         const email = 'lidson@oriontec.com.br'
         expect(Email.validate(email)).toBeTruthy()
     })
+
+    test('should not accept local part larger than 64 characters', () => {
+        const email = 'l'.repeat(65) + '@mail.com'
+        expect(Email.validate(email)).toBeFalsy()
+    })
+
 })
