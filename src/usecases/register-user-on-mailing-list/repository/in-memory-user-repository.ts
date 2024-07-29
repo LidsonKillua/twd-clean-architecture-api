@@ -20,7 +20,7 @@ export class InMemoryUserRepository implements UserRepository {
         const users = this.repository.filter((user) => {
             return user.email === email
         }) 
-        if(this.findAllUsers.length > 0) {
+        if(users.length > 0) {
             return users[0] 
         }
         return null
@@ -31,7 +31,7 @@ export class InMemoryUserRepository implements UserRepository {
     }
 
     async exists (user: UserData): Promise<boolean> {
-        if (await this.findUserByEmail(user.email) = null) {
+        if (await this.findUserByEmail(user.email) === null) {
             return false
         }
         return true
