@@ -1,4 +1,5 @@
 Api Requirements
 
 1 - Registrar usuário na lista de emails
+    - Validar email e nome
 2 - Enviar email para usuário com pôster
