@@ -17,12 +17,12 @@ describe('Email validation', () => {
     })
 
     test('should accept strings not larger than 320 characters', () => {
-        const email = 'l'.repeat(63) + '@'+ 'd'.repeat(194) + '.' + 'd'.repeat(60)
+        const email = 'l'.repeat(63) + '@' + 'd'.repeat(63) + '.' + 'd'.repeat(63) + '.' + 'd'.repeat(63) + '.' + 'd'.repeat(63)
         expect(Email.validate(email)).toBeTruthy()
     })
 
     test('should not accept strings larger than 320 characters', () => {
-        const email = 'l'.repeat(59) + '@'+ 'd'.repeat(199) + '.' + 'd'.repeat(61)
+        const email = 'l'.repeat(65) + '@' + 'd'.repeat(63) + '.' + 'd'.repeat(63) + '.' + 'd'.repeat(63) + '.' + 'd'.repeat(63)
         expect(Email.validate(email)).toBeFalsy()
     })
 
@@ -43,6 +43,16 @@ describe('Email validation', () => {
 
     test('should not accept empty domain part', () => {
         const email = 'lidson@'
+        expect(Email.validate(email)).toBeFalsy()
+    })
+
+    test('should not accept domain with a part larger than 63 characters', () => {
+        const email = 'lidson@' + 'd'.repeat(64) + '.com'
+        expect(Email.validate(email)).toBeFalsy()
+    })
+
+    test('should not accept local part with an invalid char', () => {
+        const email = 'lid space@mail.com'
         expect(Email.validate(email)).toBeFalsy()
     })
 })
