@@ -1,10 +1,17 @@
 export class Email{
-    static validate (email: String){
+    static validate (email: string){
+        
         if (!email){
             return false
         }
 
         if (email.length > 320) {
+            return false
+        }
+
+        const emailRegex = /^[-!#$%&'*+/0-9=?A-Z^_a-z`{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/
+
+        if (!emailRegex.test(email)) {
             return false
         }
 
@@ -16,6 +23,13 @@ export class Email{
 
         if (domain.length > 255 || domain.length === 0) {
             return false
+        }
+
+        const domainParts = domain.split('.')
+        for (let part of domainParts) {
+            if (part.length > 63) {
+                return false
+            } 
         }
 
         return true
