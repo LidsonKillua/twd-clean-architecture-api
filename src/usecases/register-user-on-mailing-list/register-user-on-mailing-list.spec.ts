@@ -1,4 +1,4 @@
-import { UserData } from "./user-data"
+import { UserData } from "../../entities/user-data"
 
 describe('registrar usuário na lista de emails use case', () => {
   test('should add user with complete data to mailing list', () => {
