@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
+    "test-verbose": "jest --passWithNoTests --runInBand",
     "test-unit": "npm test -- --watch -c jest-unit-config.js",
     "test-inte": "npm test -- --watch -c jest-integration-config.js",
     "test-staged": "npm test -- --findRelatedTests",
+    "test-ci": "npm test -- --coverage",
     "pre": "prettier . --write",
     "esl": "eslint --fix",
     "fix": "prettier . --write && eslint --fix ."
