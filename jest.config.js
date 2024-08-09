@@ -1,13 +1,11 @@
-/** @type {import('./dist').JestConfigWithTsJest} */
-
 module.exports = {
-    roots: ['<rootDir>/src'],
+    roots: ['<rootDir>/test'],
     moduleNameMapper: {
       '^@/(.*)$': '<rootDir>/src/$1'
     },
     coverageDirectory: 'coverage',
     collectCoverageFrom: [
-      '<rootDir>/test/**/*.ts', 
+      '<rootDir>/src/**/*.ts', 
       '!**/test/**', 
       '!**/config/**'
     ],
