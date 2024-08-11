@@ -1,7 +1,8 @@
 module.exports = {
     roots: ['<rootDir>/test'],
     moduleNameMapper: {
-      '^@/(.*)$': '<rootDir>/src/$1'
+      '^@/(.*)$': '<rootDir>/src/$1',
+      '^@test/(.*)$': '<rootDir>/test/$1',
     },
     coverageDirectory: 'coverage',
     collectCoverageFrom: [
