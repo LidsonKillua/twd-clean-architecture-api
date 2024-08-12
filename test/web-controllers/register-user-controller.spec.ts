@@ -2,7 +2,7 @@ import { UserData } from "@/entities"
 import { RegisterUserOnMailingList } from "@/usecases/register-user-on-mailing-list"
 import { UserRepository } from "@/usecases/register-user-on-mailing-list/ports"
 import { RegisterUserController } from "../../src/web-controllers/register-user-controller"
-import { InMemoryUserRepository } from "../../test/entities/usecases/register-user-on-mailing-list/repository"
+import { InMemoryUserRepository } from "../entities/usecases/register-user-on-mailing-list/repository"
 import { HttpRequest, HttpResponse } from "../../src/web-controllers/ports"
 
 describe('Register user web controller', () => {
