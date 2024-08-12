@@ -11,5 +11,5 @@
       "@test/*": ["test/*"]
     }
   },
-  "include": ["src/**/*", "test/**/*", "test/entities/email-validation.spec.ts", "test/entities/user.spec.ts", "test/entities/usecases/register-user-on-mailing-list/register-user-on-mailing-list.spec.ts", "test/entities/usecases/register-user-on-mailing-list/repository/in-memory-user-repository.spec.ts", "test/entities/usecases/register-user-on-mailing-list/repository/in-memory-user-repository.ts"]
+  "include": ["src/**/*", "test/**/*"]
 }
