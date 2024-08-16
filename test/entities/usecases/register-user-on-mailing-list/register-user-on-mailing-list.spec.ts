@@ -1,7 +1,7 @@
 import { UserData } from "@/entities"
 import { RegisterUserOnMailingList } from "@/usecases/register-user-on-mailing-list"
 import { UserRepository } from "@/usecases/register-user-on-mailing-list/ports"
-import { InMemoryUserRepository } from "@test/entities/usecases/register-user-on-mailing-list/repository"
+import { InMemoryUserRepository } from "@/usecases/register-user-on-mailing-list/repository"
 
 describe('registrar usuário na lista de emails use case', () => {
   const users: UserData[] = []
