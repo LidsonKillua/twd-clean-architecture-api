@@ -10,8 +10,7 @@ module.exports = {
       '!**/test/**', 
       '!**/config/**'
     ],
-    // preset: '@shelf/jest-postgres',
-    testEnvironment: 'node',
+    preset: '@shelf/jest-mongodb',
     transform: {
       '^.+\\.tsx?$': 'ts-jest', // Custom transformation for TypeScript files
     },
