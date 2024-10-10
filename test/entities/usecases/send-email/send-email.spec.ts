@@ -1,4 +1,4 @@
-import { Either, right, Right} from "@/shared"
+import { Either, Left, right, Right} from "@/shared"
 import { MailServiceError } from "@/usecases/errors/mail-service-error"
 import { EmailOptions, EmailService } from "@/usecases/send-email/ports"
 import { SendEmail } from "@/usecases/send-email"
@@ -40,5 +40,12 @@ describe('Send email use case', () => {
         const sut = new SendEmail(mailOptions, mailServiceStub)
         const response = await sut.perform({ name: toName, email: toEmail })
         expect(response).toBeInstanceOf(Right)
+    })
+
+    test('Should return MailServiceError if email service fails', async () => {
+        const mailServiceStub = new MailServiceStub()
+        const sut = new SendEmail(mailOptions, mailServiceStub)
+        const response = await sut.perform({ name: toName, email: 'inválido' })
+        expect(response).toBeInstanceOf(Left)
     })
 })
