@@ -1,7 +1,8 @@
-import { Either, left, Left, right, Right} from "@/shared"
+import { Either, left, right, Right} from "@/shared"
 import { MailServiceError } from "@/usecases/errors/mail-service-error"
 import { EmailOptions, EmailService } from "@/usecases/send-email/ports"
 import { SendEmail } from "@/usecases/send-email"
+import { Email, User } from "@/entities"
 
 const fromName = 'Test'
 const fromEmail = 'mail@mail.com'
@@ -41,24 +42,19 @@ class MailServiceErrorStub implements EmailService {
 }
 
 describe('Send email use case', () => {
+    const user = User.create({ name: toName, email: toEmail }).value as User
+
     test('Should send email', async () => {
         const mailServiceStub = new MailServiceStub()
         const sut = new SendEmail(mailOptions, mailServiceStub)
-        const response = await sut.perform({ name: toName, email: toEmail })
-        expect(response).toBeInstanceOf(Right)
-    })
-
-    test('Should return Error if user data is invalid', async () => {
-        const mailServiceStub = new MailServiceStub()
-        const sut = new SendEmail(mailOptions, mailServiceStub)
-        const response = await sut.perform({ name: toName, email: 'inválido' })
-        expect(response).toBeInstanceOf(Left)
+        const response = (await sut.perform(user)).value as EmailOptions
+        expect(response.to).toEqual(toName+' <'+toEmail+'>')
     })
 
     test('Should return MailServiceError if email service fails', async () => {
         const mailServiceStub = new MailServiceErrorStub()
         const sut = new SendEmail(mailOptions, mailServiceStub)
-        const response = await sut.perform({ name: toName, email: toEmail })
+        const response = await sut.perform(user)
         expect(response.value).toBeInstanceOf(MailServiceError)
     })
 })
