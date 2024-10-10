@@ -1,4 +1,4 @@
-import { User, UserData } from "@/entities"
+import { UserData } from "@/entities"
 import { Either, right } from "@/shared"
 import { MailServiceError } from "@/usecases/errors"
 import { RegisterAndSendEmail } from "@/usecases/register-and-send-email"
@@ -50,13 +50,13 @@ describe('Register and send email use case', () => {
     const registerAndSendEmailUseCase: RegisterAndSendEmail = 
         new RegisterAndSendEmail(resgisterUseCase, sendEmailUseCase)
 
-    test('should add user with complete data to mailing list', async () => {
+    test('should add user and send email with complete data to mailing list', async () => {
         const name = 'any_name'
         const email = 'any@email.com'
-        const response: User = (await registerAndSendEmailUseCase.perform({ name, email })).value as User
+        const response: UserData = (await registerAndSendEmailUseCase.perform({ name, email })).value as UserData
         const user = repo.findUserByEmail(email)
         expect((await user).name).toBe('any_name')
-        expect(response.name.value).toBe('any_name')
+        expect(response.name).toBe('any_name')
         expect(mailServiceMock.timesSendWasCalled).toEqual(1)
     })
 
