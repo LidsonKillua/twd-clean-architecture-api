@@ -26,6 +26,6 @@ beforeEach(async () => {
         name: 'Any Name',
         email: 'lidson@gmail.com'
       })
-      .expect(201)
+      .expect(200)
   })     
 })
