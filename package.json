@@ -55,6 +55,7 @@
     ]
   },
   "dependencies": {
+    "@types/nodemailer": "^6.4.16",
     "express": "^4.21.0",
     "module-alias": "^2.2.3",
     "mongodb": "^6.9.0",
