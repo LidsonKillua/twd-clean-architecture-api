@@ -14,6 +14,7 @@ module.exports = {
     transform: {
       '^.+\\.tsx?$': 'ts-jest', // Custom transformation for TypeScript files
     },
+    setupFiles: ['dotenv/config'],
   
     clearMocks: true,
     collectCoverage: true,
